@@ -251,8 +251,8 @@
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <div>
-                            <label class="block font-bold text-slate-800 mb-1 text-xs">Họ và tên (để trống nếu ẩn danh):</label>
-                            <input type="text" id="studentName" placeholder="Ví dụ: Nguyễn Văn An" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:border-pink-500 focus:outline-none bg-white text-sm">
+                            <label class="block font-bold text-slate-800 mb-1 text-xs">Họ và tên của em: <span class="text-pink-500">*</span></label>
+                            <input type="text" id="studentName" required placeholder="Ví dụ: Nguyễn Văn An" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:border-pink-500 focus:outline-none bg-white text-sm">
                         </div>
                         <div>
                             <label class="block font-bold text-slate-800 mb-1 text-xs">Lớp: <span class="text-pink-500">*</span></label>
@@ -443,7 +443,7 @@
         }
 
         let suggestions = JSON.parse(localStorage.getItem('th_phumy_suggestions')) || [
-            { id: 1, targetGroup: "Đội viên (Khối 4, 5)", category: "📚 Học tập & Thuv viện", emotion: "🤩 Hào hứng", name: "Nguyễn Minh Khôi", classRoom: "Lớp 5A", title: "Đề xuất thêm sách Khoa học vui", content: "Em mong thư viện trường mình bổ sung thêm các cuốn sách thí nghiệm khoa học vui cho chúng em đọc giờ giải lao ạ.", status: "Đã giải đáp / Xử lý", reply: "Thầy Tổng phụ trách đã tiếp nhận và sẽ bổ sung thêm 20 đầu sách khoa học vào thư viện trong tuần tới nhé!", date: "12/10/2026" },
+            { id: 1, targetGroup: "Đội viên (Khối 4, 5)", category: "📚 Học tập & Thư viện", emotion: "🤩 Hào hứng", name: "Nguyễn Minh Khôi", classRoom: "Lớp 5A", title: "Đề xuất thêm sách Khoa học vui", content: "Em mong thư viện trường mình bổ sung thêm các cuốn sách thí nghiệm khoa học vui cho chúng em đọc giờ giải lao ạ.", status: "Đã giải đáp / Xử lý", reply: "Thầy Tổng phụ trách đã tiếp nhận và sẽ bổ sung thêm 20 đầu sách khoa học vào thư viện trong tuần tới nhé!", date: "12/10/2026" },
             { id: 2, targetGroup: "Nhi đồng (Khối 1, 2, 3)", category: "🎯 Hoạt động Đội & Phong trào", emotion: "😊 Vui vẻ", name: "Trần Bảo Ngọc", classRoom: "Lớp 3B", title: "Thêm trò chơi dân gian giờ ra chơi", content: "Em muốn sân trường có thêm phấn để tụi em vẽ ô ăn quan và chơi nhảy dây ạ.", status: "Đã tiếp nhận", reply: "Ý kiến rất hay! Liên đội sẽ chuẩn bị dụng cụ cho các lớp.", date: "13/10/2026" }
         ];
 
@@ -479,7 +479,7 @@
             let targetGroup = document.querySelector('input[name="targetGroup"]:checked').value;
             let category = document.querySelector('input[name="category"]:checked').value;
             let emotion = document.querySelector('input[name="emotion"]:checked').value;
-            let name = document.getElementById('studentName').value.trim() || "Học sinh ẩn danh 🌟";
+            let name = document.getElementById('studentName').value.trim();
             let classRoom = document.getElementById('studentClass').value.trim();
             let title = document.getElementById('studentTitle').value.trim();
             let content = document.getElementById('studentContent').value.trim();
