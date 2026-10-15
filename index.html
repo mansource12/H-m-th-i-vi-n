@@ -110,7 +110,7 @@
                         Nơi gửi gắm điều ước, góp ý & tâm sự học đường 💌
                     </h2>
                     <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
-                        Các em học sinh Nhi đồng (Khối 1, 2, 3) và Đội viên (Khối 4, 5) hãy tự tin gửi những suy nghĩ, sáng kiến hoặc báo cáo việc tốt cho Tổng phụ trách nhé! Nội dung của các em sẽ được bảo mật tuyệt đối.
+                        Các em học sinh Nhi đồng (Khối 1, 2, 3) và Đội viên (Khối 4, 5) hãy tự tin gửi những suy nghĩ, sáng kiến hoặc báo cáo việc tốt cho Tổng phụ trách nhé!
                     </p>
                     <div class="pt-2 flex flex-wrap gap-3 justify-center md:justify-start">
                         <button onclick="switchTab('form'); playSound('pop');" class="bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white font-heading font-bold px-6 py-3 rounded-2xl shadow-lg transform transition hover:scale-105 flex items-center space-x-2">
@@ -149,3 +149,585 @@
                     </div>
                 </div>
                 <div class="bg-white/90 p-5 rounded-2xl shadow-md border-b-4 border-emerald-400 flex items-center space-x-4">
+                    <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center text-2xl">🎉</div>
+                    <div>
+                        <p class="text-xs text-slate-500 font-bold">Đã giải quyết</p>
+                        <h3 id="stat-done" class="text-2xl font-extrabold text-emerald-600 font-heading">0</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VIEW 2: FORM -->
+        <section id="view-form" class="view-section hidden space-y-6">
+            <div class="glass-card rounded-3xl p-6 md:p-8 shadow-xl border-4 border-indigo-200">
+                <div class="text-center max-w-lg mx-auto mb-6">
+                    <h2 class="text-2xl md:text-3xl font-extrabold text-indigo-900 font-heading">Gửi Điều Em Muốn Nói 💌</h2>
+                    <p class="text-sm text-slate-600 mt-1">Hãy tự tin nêu ý kiến, băn khoăn hoặc việc tốt nhé. Thầy cô luôn lắng nghe các em!</p>
+                </div>
+
+                <form id="suggestionForm" onsubmit="handleFormSubmit(event)" class="space-y-5 max-w-2xl mx-auto">
+                    <div>
+                        <label class="block font-bold text-slate-800 mb-2 font-heading text-sm sm:text-base">1. Em thuộc nhóm đối tượng nào? <span class="text-pink-500">*</span></label>
+                        <div class="grid grid-cols-2 gap-3">
+                            <label class="cursor-pointer border-2 border-indigo-100 hover:border-pink-400 rounded-2xl p-3 flex items-center space-x-3 bg-white transition group has-[:checked]:border-pink-500 has-[:checked]:bg-pink-50">
+                                <input type="radio" name="targetGroup" value="Nhi đồng (Khối 1, 2, 3)" required class="accent-pink-500">
+                                <div>
+                                    <div class="font-bold text-sm text-slate-800 group-hover:text-pink-600">Nhi đồng 🐥</div>
+                                    <div class="text-xs text-slate-500">Khối 1, 2, 3</div>
+                                </div>
+                            </label>
+                            <label class="cursor-pointer border-2 border-indigo-100 hover:border-pink-400 rounded-2xl p-3 flex items-center space-x-3 bg-white transition group has-[:checked]:border-pink-500 has-[:checked]:bg-pink-50">
+                                <input type="radio" name="targetGroup" value="Đội viên (Khối 4, 5)" class="accent-pink-500">
+                                <div>
+                                    <div class="font-bold text-sm text-slate-800 group-hover:text-pink-600">Đội viên 🎒</div>
+                                    <div class="text-xs text-slate-500">Khối 4, 5</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block font-bold text-slate-800 mb-2 font-heading text-sm sm:text-base">2. Chủ đề em muốn góp ý là gì? <span class="text-pink-500">*</span></label>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                            <label class="cursor-pointer border-2 border-slate-200 hover:border-pink-400 rounded-xl p-2.5 flex items-center space-x-2.5 bg-white transition has-[:checked]:border-pink-500 has-[:checked]:bg-pink-50">
+                                <input type="radio" name="category" value="📚 Học tập & Thư viện" required class="accent-pink-500">
+                                <span class="text-xl">📚</span>
+                                <span class="text-xs font-bold text-slate-700">Học tập & Thư viện</span>
+                            </label>
+                            <label class="cursor-pointer border-2 border-slate-200 hover:border-pink-400 rounded-xl p-2.5 flex items-center space-x-2.5 bg-white transition has-[:checked]:border-pink-500 has-[:checked]:bg-pink-50">
+                                <input type="radio" name="category" value="🎯 Hoạt động Đội & Phong trào" class="accent-pink-500">
+                                <span class="text-xl">🎯</span>
+                                <span class="text-xs font-bold text-slate-700">Hoạt động Đội & Phong trào</span>
+                            </label>
+                            <label class="cursor-pointer border-2 border-slate-200 hover:border-pink-400 rounded-xl p-2.5 flex items-center space-x-2.5 bg-white transition has-[:checked]:border-pink-500 has-[:checked]:bg-pink-50">
+                                <input type="radio" name="category" value="🏗️ Cơ sở vật chất & Sân trường" class="accent-pink-500">
+                                <span class="text-xl">🏗️</span>
+                                <span class="text-xs font-bold text-slate-700">Cơ sở vật chất & Sân trường</span>
+                            </label>
+                            <label class="cursor-pointer border-2 border-slate-200 hover:border-pink-400 rounded-xl p-2.5 flex items-center space-x-2.5 bg-white transition has-[:checked]:border-pink-500 has-[:checked]:bg-pink-50">
+                                <input type="radio" name="category" value="🌟 Báo cáo việc tốt / Tấm gương" class="accent-pink-500">
+                                <span class="text-xl">🌟</span>
+                                <span class="text-xs font-bold text-slate-700">Báo cáo việc tốt / Tấm gương</span>
+                            </label>
+                            <label class="cursor-pointer border-2 border-slate-200 hover:border-pink-400 rounded-xl p-2.5 flex items-center space-x-2.5 bg-white transition has-[:checked]:border-pink-500 has-[:checked]:bg-pink-50">
+                                <input type="radio" name="category" value="❤️ Bạn bè & Thầy cô" class="accent-pink-500">
+                                <span class="text-xl">❤️</span>
+                                <span class="text-xs font-bold text-slate-700">Bạn bè & Thầy cô</span>
+                            </label>
+                            <label class="cursor-pointer border-2 border-slate-200 hover:border-pink-400 rounded-xl p-2.5 flex items-center space-x-2.5 bg-white transition has-[:checked]:border-pink-500 has-[:checked]:bg-pink-50">
+                                <input type="radio" name="category" value="💡 Ý kiến khác" class="accent-pink-500">
+                                <span class="text-xl">💡</span>
+                                <span class="text-xs font-bold text-slate-700">Ý kiến khác</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block font-bold text-slate-800 mb-2 font-heading text-sm">3. Cảm xúc hiện tại của em? <span class="text-pink-500">*</span></label>
+                        <div class="flex flex-wrap gap-2 justify-between">
+                            <label class="cursor-pointer flex-1 min-w-[70px] text-center p-2 rounded-xl border border-slate-200 bg-white transition has-[:checked]:border-pink-500 has-[:checked]:bg-pink-100">
+                                <input type="radio" name="emotion" value="😊 Vui vẻ" required class="hidden">
+                                <div class="text-2xl">😊</div>
+                                <div class="text-[11px] font-bold text-slate-700 mt-1">Vui vẻ</div>
+                            </label>
+                            <label class="cursor-pointer flex-1 min-w-[70px] text-center p-2 rounded-xl border border-slate-200 bg-white transition has-[:checked]:border-pink-500 has-[:checked]:bg-pink-100">
+                                <input type="radio" name="emotion" value="🤩 Hào hứng" class="hidden">
+                                <div class="text-2xl">🤩</div>
+                                <div class="text-[11px] font-bold text-slate-700 mt-1">Hào hứng</div>
+                            </label>
+                            <label class="cursor-pointer flex-1 min-w-[70px] text-center p-2 rounded-xl border border-slate-200 bg-white transition has-[:checked]:border-pink-500 has-[:checked]:bg-pink-100">
+                                <input type="radio" name="emotion" value="🤔 Băn khoăn" class="hidden">
+                                <div class="text-2xl">🤔</div>
+                                <div class="text-[11px] font-bold text-slate-700 mt-1">Băn khoăn</div>
+                            </label>
+                            <label class="cursor-pointer flex-1 min-w-[70px] text-center p-2 rounded-xl border border-slate-200 bg-white transition has-[:checked]:border-pink-500 has-[:checked]:bg-pink-100">
+                                <input type="radio" name="emotion" value="🆘 Cần giúp đỡ" class="hidden">
+                                <div class="text-2xl">🆘</div>
+                                <div class="text-[11px] font-bold text-slate-700 mt-1">Cần giúp đỡ</div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div>
+                            <label class="block font-bold text-slate-800 mb-1 text-xs">Họ và tên của em: <span class="text-pink-500">*</span></label>
+                            <input type="text" id="studentName" required placeholder="Ví dụ: Nguyễn Văn An" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:border-pink-500 focus:outline-none bg-white text-sm">
+                        </div>
+                        <div>
+                            <label class="block font-bold text-slate-800 mb-1 text-xs">Lớp: <span class="text-pink-500">*</span></label>
+                            <input type="text" id="studentClass" required placeholder="Ví dụ: Lớp 3A, 4B..." class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:border-pink-500 focus:outline-none bg-white text-sm">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block font-bold text-slate-800 mb-1 text-xs">Tiêu đề ngắn gọn: <span class="text-pink-500">*</span></label>
+                        <input type="text" id="studentTitle" required placeholder="Ví dụ: Đề xuất mở thêm CLB Đọc Sách" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:border-pink-500 focus:outline-none bg-white text-sm font-semibold">
+                    </div>
+
+                    <div>
+                        <label class="block font-bold text-slate-800 mb-1 text-xs">Nội dung chi tiết: <span class="text-pink-500">*</span></label>
+                        <div class="flex flex-wrap gap-1.5 mb-2">
+                            <span onclick="appendSuggestion('Em mong thư viện có thêm nhiều truyện tranh lịch sử và khoa học ạ! 📖')" class="text-[11px] bg-yellow-100 hover:bg-yellow-200 text-yellow-900 px-2.5 py-1 rounded-full cursor-pointer font-bold transition">📖 Thêm sách truyện</span>
+                            <span onclick="appendSuggestion('Em đề xuất tổ chức hội thi vẽ tranh chủ đề Môi trường xanh 🎨')" class="text-[11px] bg-emerald-100 hover:bg-emerald-200 text-emerald-900 px-2.5 py-1 rounded-full cursor-pointer font-bold transition">🎨 Hội thi vẽ tranh</span>
+                            <span onclick="appendSuggestion('Em cảm ơn thầy cô Liên đội đã tổ chức ngày hội rất vui ạ! ❤️')" class="text-[11px] bg-pink-100 hover:bg-pink-200 text-pink-900 px-2.5 py-1 rounded-full cursor-pointer font-bold transition">❤️ Cảm ơn thầy cô</span>
+                        </div>
+                        <textarea id="studentContent" required rows="4" placeholder="Nhập chi tiết ý kiến hoặc lời tâm sự của em..." class="w-full px-3.5 py-2.5 rounded-2xl border border-slate-300 focus:border-pink-500 focus:outline-none bg-white text-sm leading-relaxed"></textarea>
+                    </div>
+
+                    <div class="text-center pt-2">
+                        <button type="submit" class="w-full sm:w-auto bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 text-white font-heading font-extrabold text-base sm:text-lg px-8 py-3 rounded-2xl shadow-xl transform transition hover:scale-105 flex items-center justify-center space-x-2 mx-auto">
+                            <i class="fa-solid fa-paper-plane"></i> <span>Gửi Ý Kiến Ngay Lập Tức! 🚀</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- VIEW 3: WALL OF STARS -->
+        <section id="view-wall" class="view-section hidden space-y-6">
+            <div class="text-center max-w-lg mx-auto">
+                <h2 class="text-2xl md:text-3xl font-extrabold text-indigo-900 font-heading">Bảng Tin Sao Ý Kiến 🌟</h2>
+                <p class="text-sm text-slate-600 mt-1">Cùng khám phá những góp ý và mong ước đáng yêu từ các bạn nhé!</p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-2">
+                <button onclick="filterWall('all')" id="wall-filter-all" class="wall-filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-indigo-600 text-white shadow">Tất cả</button>
+                <button onclick="filterWall('Chưa xử lý')" class="wall-filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-white text-indigo-700 border border-indigo-200 shadow-sm">⏳ Chưa xử lý</button>
+                <button onclick="filterWall('Đã tiếp nhận')" class="wall-filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-white text-indigo-700 border border-indigo-200 shadow-sm">🧐 Đã tiếp nhận</button>
+                <button onclick="filterWall('Đã giải đáp / Xử lý')" class="wall-filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-white text-indigo-700 border border-indigo-200 shadow-sm">🎉 Đã giải đáp</button>
+            </div>
+            <div id="suggestionsGrid" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+        </section>
+
+        <!-- VIEW 4: MINI GAME -->
+        <section id="view-game" class="view-section hidden space-y-6">
+            <div class="glass-card rounded-3xl p-6 md:p-8 shadow-xl border-4 border-yellow-300 text-center max-w-xl mx-auto space-y-4">
+                <div class="w-20 h-20 bg-yellow-400 text-white rounded-full flex items-center justify-center text-4xl mx-auto shadow-md animate-bounce">⭐</div>
+                <h2 class="text-2xl md:text-3xl font-extrabold text-indigo-900 font-heading">Đố Vui Đội Viên & Nhi Đồng</h2>
+                <p class="text-sm text-slate-600">Trả lời các câu hỏi vui để nhận Huy hiệu <b class="text-pink-600">"Cháu Ngoan Bác Hồ"</b> nhé!</p>
+                <div id="quiz-container" class="bg-white p-5 rounded-2xl shadow-md border-2 border-indigo-100 text-left space-y-4">
+                    <div class="flex justify-between items-center text-xs font-bold text-indigo-600">
+                        <span id="quiz-progress">Câu hỏi 1 / 3</span>
+                        <span id="quiz-score">Điểm: 0 ⭐</span>
+                    </div>
+                    <h3 id="quiz-question" class="text-base sm:text-lg font-bold text-slate-800 font-heading leading-snug">Đội TNTP Hồ Chí Minh mang tên Bác Hồ từ năm nào?</h3>
+                    <div id="quiz-options" class="space-y-2"></div>
+                </div>
+                <div id="quiz-result" class="hidden space-y-4 py-4">
+                    <div class="text-5xl">🏆</div>
+                    <h3 class="text-xl font-bold text-pink-600 font-heading">Tuyệt vời! Em đã hoàn thành bài đố vui!</h3>
+                    <button onclick="restartQuiz()" class="bg-yellow-400 hover:bg-yellow-500 text-yellow-950 font-heading font-bold px-6 py-2.5 rounded-xl shadow transition">Chơi Lại Lần Nữa</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- VIEW 5: ADMIN DASHBOARD -->
+        <section id="view-admin" class="view-section hidden space-y-6">
+            <div class="bg-white/95 rounded-3xl p-5 md:p-8 shadow-xl border-4 border-purple-200 space-y-6">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b pb-4 gap-3">
+                    <div>
+                        <h2 class="text-xl md:text-2xl font-extrabold text-purple-900 font-heading">Góc Quản Lý - Tổng Phụ Trách 🛡️</h2>
+                        <p class="text-xs text-slate-500 mt-0.5">Tiếp nhận, xử lý, trả lời ý kiến và xuất báo cáo dữ liệu.</p>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <button onclick="logoutAdmin()" class="px-3 py-2 bg-rose-100 hover:bg-rose-200 text-rose-700 font-bold rounded-xl text-xs flex items-center space-x-1">
+                            <i class="fa-solid fa-lock"></i> <span>Đăng xuất</span>
+                        </button>
+                        <button onclick="switchTab('home')" class="px-3 py-2 bg-indigo-100 hover:bg-indigo-200 text-indigo-700 font-bold rounded-xl text-xs">
+                            <i class="fa-solid fa-house"></i> Trang chủ
+                        </button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                    <div class="bg-purple-50 p-3.5 rounded-2xl border border-purple-100 text-center">
+                        <span class="text-xs text-purple-700 font-bold">Tổng số ý kiến</span>
+                        <h4 id="admin-stat-total" class="text-2xl font-extrabold text-purple-900 font-heading">0</h4>
+                    </div>
+                    <div class="bg-amber-50 p-3.5 rounded-2xl border border-amber-100 text-center">
+                        <span class="text-xs text-amber-700 font-bold">⏳ Chưa xử lý</span>
+                        <h4 id="admin-stat-new" class="text-2xl font-extrabold text-amber-900 font-heading">0</h4>
+                    </div>
+                    <div class="bg-blue-50 p-3.5 rounded-2xl border border-blue-100 text-center">
+                        <span class="text-xs text-blue-700 font-bold">🧐 Đã tiếp nhận</span>
+                        <h4 id="admin-stat-review" class="text-2xl font-extrabold text-blue-900 font-heading">0</h4>
+                    </div>
+                    <div class="bg-emerald-50 p-3.5 rounded-2xl border border-emerald-100 text-center">
+                        <span class="text-xs text-emerald-700 font-bold">🎉 Đã giải đáp</span>
+                        <h4 id="admin-stat-done" class="text-2xl font-extrabold text-emerald-900 font-heading">0</h4>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap gap-2 items-center justify-between bg-purple-50/70 p-3.5 rounded-2xl border border-purple-100">
+                    <div class="flex flex-wrap gap-1.5">
+                        <button onclick="filterAdminTable('all')" class="admin-filter-btn px-3 py-1 bg-purple-600 text-white rounded-xl text-xs font-bold">Tất cả</button>
+                        <button onclick="filterAdminTable('Chưa xử lý')" class="admin-filter-btn px-3 py-1 bg-white text-purple-700 border border-purple-200 rounded-xl text-xs font-bold">⏳ Chưa xử lý</button>
+                        <button onclick="filterAdminTable('Đã tiếp nhận')" class="admin-filter-btn px-3 py-1 bg-white text-purple-700 border border-purple-200 rounded-xl text-xs font-bold">🧐 Đã tiếp nhận</button>
+                        <button onclick="filterAdminTable('Đã giải đáp / Xử lý')" class="admin-filter-btn px-3 py-1 bg-white text-purple-700 border border-purple-200 rounded-xl text-xs font-bold">🎉 Đã giải đáp</button>
+                    </div>
+                    <button onclick="exportData()" class="px-3.5 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold flex items-center space-x-1.5 shadow">
+                        <i class="fa-solid fa-file-export"></i> <span>Tải báo cáo JSON</span>
+                    </button>
+                </div>
+
+                <div class="overflow-x-auto rounded-2xl border border-purple-100">
+                    <table class="w-full text-left border-collapse text-xs md:text-sm">
+                        <thead>
+                            <tr class="bg-purple-100/80 text-purple-900 font-heading">
+                                <th class="p-3">Học sinh / Lớp</th>
+                                <th class="p-3">Chủ đề & Nội dung</th>
+                                <th class="p-3">Trạng thái</th>
+                                <th class="p-3 text-center">Giải đáp / Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody id="adminTableBody" class="divide-y divide-purple-100 bg-white"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full py-4 px-4 text-center bg-white/80 border-t-2 border-pink-200 text-xs text-slate-600 mt-10">
+        <p class="font-bold">🏫 Liên đội Trường Tiểu học Phú Mỹ - Phường Bình Dương</p>
+        <p class="mt-1 text-slate-500">Môi trường kết nối yêu thương giữa học sinh và nhà trường ✨</p>
+    </footer>
+
+    <!-- Admin PIN Modal -->
+    <div id="adminModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl p-6 max-w-sm w-full shadow-2xl border-4 border-purple-300 space-y-4 text-center">
+            <div class="w-14 h-14 bg-purple-100 text-purple-700 rounded-full flex items-center justify-center text-2xl mx-auto">🛡️</div>
+            <h3 class="text-xl font-extrabold text-purple-900 font-heading">Đăng Nhập Quản Lý</h3>
+            <p class="text-xs text-slate-500">Dành riêng cho Thầy/Cô Tổng Phụ Trách Liên Đội.</p>
+            <input type="password" id="adminPinInput" placeholder="Nhập mật khẩu (Mặc định: 1234)" class="w-full px-4 py-3 rounded-2xl border-2 border-purple-200 focus:border-purple-600 focus:outline-none text-center font-bold tracking-widest text-lg">
+            <div class="flex space-x-2 pt-2">
+                <button onclick="closeAdminPinModal()" class="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-2.5 rounded-xl text-sm">Hủy</button>
+                <button onclick="verifyAdminPin()" class="flex-1 bg-purple-600 hover:bg-purple-700 text-white font-bold py-2.5 rounded-xl text-sm shadow">Đăng Nhập</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript xử lý logic -->
+    <script>
+        let soundEnabled = true;
+        function toggleSound() {
+            soundEnabled = !soundEnabled;
+            document.getElementById('soundText').innerText = soundEnabled ? "Âm thanh" : "Tắt tiếng";
+            document.getElementById('soundIcon').className = soundEnabled ? "fa-solid fa-volume-high" : "fa-solid fa-volume-xmark";
+        }
+        function playSound(type) {
+            if (!soundEnabled) return;
+            try {
+                let ctx = new (window.AudioContext || window.webkitAudioContext)();
+                let osc = ctx.createOscillator();
+                let gain = ctx.createGain();
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                if (type === 'pop') {
+                    osc.frequency.setValueAtTime(400, ctx.currentTime);
+                    osc.frequency.exponentialRampToValueAtTime(800, ctx.currentTime + 0.1);
+                    gain.gain.setValueAtTime(0.1, ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.1);
+                    osc.start();
+                    osc.stop(ctx.currentTime + 0.1);
+                } else if (type === 'success') {
+                    osc.frequency.setValueAtTime(500, ctx.currentTime);
+                    osc.frequency.setValueAtTime(700, ctx.currentTime + 0.1);
+                    gain.gain.setValueAtTime(0.15, ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.3);
+                    osc.start();
+                    osc.stop(ctx.currentTime + 0.3);
+                }
+            } catch(e) {}
+        }
+
+        let suggestions = JSON.parse(localStorage.getItem('th_phumy_suggestions')) || [
+            { id: 1, targetGroup: "Đội viên (Khối 4, 5)", category: "📚 Học tập & Thư viện", emotion: "🤩 Hào hứng", name: "Nguyễn Minh Khôi", classRoom: "Lớp 5A", title: "Đề xuất thêm sách Khoa học vui", content: "Em mong thư viện trường mình bổ sung thêm các cuốn sách thí nghiệm khoa học vui cho chúng em đọc giờ giải lao ạ.", status: "Đã giải đáp / Xử lý", reply: "Thầy Tổng phụ trách đã tiếp nhận và sẽ bổ sung thêm 20 đầu sách khoa học vào thư viện trong tuần tới nhé!", date: "12/10/2026" },
+            { id: 2, targetGroup: "Nhi đồng (Khối 1, 2, 3)", category: "🎯 Hoạt động Đội & Phong trào", emotion: "😊 Vui vẻ", name: "Trần Bảo Ngọc", classRoom: "Lớp 3B", title: "Thêm trò chơi dân gian giờ ra chơi", content: "Em muốn sân trường có thêm phấn để tụi em vẽ ô ăn quan và chơi nhảy dây ạ.", status: "Đã tiếp nhận", reply: "Ý kiến rất hay! Liên đội sẽ chuẩn bị dụng cụ cho các lớp.", date: "13/10/2026" }
+        ];
+
+        function saveToLocalStorage() {
+            localStorage.setItem('th_phumy_suggestions', JSON.stringify(suggestions));
+        }
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.view-section').forEach(el => el.classList.add('hidden'));
+            document.getElementById('view-' + tabId).classList.remove('hidden');
+            
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.className = "tab-btn px-3.5 sm:px-5 py-2 rounded-2xl font-heading font-bold text-xs sm:text-base bg-white text-indigo-700 shadow-md transform transition hover:scale-105 flex items-center space-x-1.5 border-2 border-indigo-200";
+            });
+            if(tabId !== 'admin') {
+                let activeBtn = document.getElementById('tab-' + tabId);
+                if(activeBtn) {
+                    activeBtn.className = "tab-btn px-3.5 sm:px-5 py-2 rounded-2xl font-heading font-bold text-xs sm:text-base bg-pink-500 text-white shadow-lg transform transition hover:scale-105 flex items-center space-x-1.5";
+                }
+            }
+            if(tabId === 'wall') renderWall('all');
+            if(tabId === 'home') updateStats();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function appendSuggestion(text) {
+            document.getElementById('studentContent').value = text;
+            playSound('pop');
+        }
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            let targetGroup = document.querySelector('input[name="targetGroup"]:checked').value;
+            let category = document.querySelector('input[name="category"]:checked').value;
+            let emotion = document.querySelector('input[name="emotion"]:checked').value;
+            let name = document.getElementById('studentName').value.trim();
+            let classRoom = document.getElementById('studentClass').value.trim();
+            let title = document.getElementById('studentTitle').value.trim();
+            let content = document.getElementById('studentContent').value.trim();
+
+            let newEntry = {
+                id: Date.now(),
+                targetGroup, category, emotion, name, classRoom, title, content,
+                status: "Chưa xử lý",
+                reply: "",
+                date: new Date().toLocaleDateString('vi-VN')
+            };
+
+            suggestions.unshift(newEntry);
+            saveToLocalStorage();
+            updateStats();
+            playSound('success');
+
+            if(typeof confetti === 'function') {
+                confetti({ particleCount: 120, spread: 80, origin: { y: 0.6 } });
+            }
+
+            alert("🎉 Gửi ý kiến thành công! Cảm ơn những đóng góp tuyệt vời của em cho Liên đội Trường TH Phú Mỹ!");
+            document.getElementById('suggestionForm').reset();
+            switchTab('wall');
+        }
+
+        function updateStats() {
+            let total = suggestions.length;
+            let review = suggestions.filter(s => s.status === 'Đã tiếp nhận').length;
+            let done = suggestions.filter(s => s.status === 'Đã giải đáp / Xử lý').length;
+
+            document.getElementById('stat-total').innerText = total;
+            document.getElementById('stat-review').innerText = review;
+            document.getElementById('stat-done').innerText = done;
+        }
+
+        function renderWall(filterStatus) {
+            let grid = document.getElementById('suggestionsGrid');
+            grid.innerHTML = '';
+            let filtered = filterStatus === 'all' ? suggestions : suggestions.filter(s => s.status === filterStatus);
+
+            if(filtered.length === 0) {
+                grid.innerHTML = `<div class="col-span-full text-center py-10 bg-white/80 rounded-2xl text-slate-500 font-semibold">Chưa có ý kiến nào trong mục này cả. Hãy là người đầu tiên gửi ý kiến nhé! 📮</div>`;
+                return;
+            }
+
+            filtered.forEach(s => {
+                let badgeColor = s.status === 'Chưa xử lý' ? 'bg-amber-100 text-amber-800' : (s.status === 'Đã tiếp nhận' ? 'bg-blue-100 text-blue-800' : 'bg-emerald-100 text-emerald-800');
+                let card = document.createElement('div');
+                card.className = "glass-card p-5 rounded-3xl shadow-md border-2 border-indigo-100 flex flex-col justify-between space-y-3";
+                card.innerHTML = `
+                    <div>
+                        <div class="flex justify-between items-start gap-2 mb-2">
+                            <span class="px-2.5 py-1 bg-pink-100 text-pink-700 text-[11px] font-extrabold rounded-full">${s.category}</span>
+                            <span class="px-2.5 py-1 ${badgeColor} text-[11px] font-extrabold rounded-full">${s.status}</span>
+                        </div>
+                        <h3 class="font-heading font-extrabold text-slate-900 text-base">${s.title}</h3>
+                        <p class="text-slate-600 text-xs mt-1 leading-relaxed">${s.content}</p>
+                    </div>
+                    <div>
+                        ${s.reply ? `<div class="mt-2 p-3 bg-emerald-50 rounded-2xl border border-emerald-200 text-xs text-emerald-900"><strong class="font-heading">💬 Thầy/Cô phản hồi:</strong> ${s.reply}</div>` : ''}
+                        <div class="mt-3 pt-3 border-t border-slate-100 flex justify-between items-center text-[11px] text-slate-500 font-bold">
+                            <span>${s.emotion} ${s.name} (${s.classRoom})</span>
+                            <span>📅 ${s.date}</span>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function filterWall(status) {
+            renderWall(status);
+        }
+
+        // Admin Auth & Dashboard
+        function openAdminPinModal() {
+            document.getElementById('adminModal').classList.remove('hidden');
+            document.getElementById('adminPinInput').value = '';
+            document.getElementById('adminPinInput').focus();
+        }
+        function closeAdminPinModal() {
+            document.getElementById('adminModal').classList.add('hidden');
+        }
+        function verifyAdminPin() {
+            let pin = document.getElementById('adminPinInput').value;
+            if(pin === '1234' || pin === 'admin123') {
+                closeAdminPinModal();
+                switchTab('admin');
+                renderAdminTable('all');
+                updateAdminStats();
+                playSound('success');
+            } else {
+                alert("❌ Mật khẩu quản lý chưa chính xác! (Mặc định là 1234)");
+            }
+        }
+        function logoutAdmin() {
+            switchTab('home');
+        }
+
+        function updateAdminStats() {
+            document.getElementById('admin-stat-total').innerText = suggestions.length;
+            document.getElementById('admin-stat-new').innerText = suggestions.filter(s => s.status === 'Chưa xử lý').length;
+            document.getElementById('admin-stat-review').innerText = suggestions.filter(s => s.status === 'Đã tiếp nhận').length;
+            document.getElementById('admin-stat-done').innerText = suggestions.filter(s => s.status === 'Đã giải đáp / Xử lý').length;
+        }
+
+        function renderAdminTable(filter) {
+            let tbody = document.getElementById('adminTableBody');
+            tbody.innerHTML = '';
+            let filtered = filter === 'all' ? suggestions : suggestions.filter(s => s.status === filter);
+
+            if(filtered.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="4" class="p-6 text-center text-slate-500">Không có dữ liệu ý kiến.</td></tr>`;
+                return;
+            }
+
+            filtered.forEach(s => {
+                let tr = document.createElement('tr');
+                tr.className = "hover:bg-purple-50/50 transition";
+                tr.innerHTML = `
+                    <td class="p-3 align-top font-bold text-slate-800">
+                        ${s.name}<br><span class="text-xs font-normal text-slate-500">${s.classRoom} (${s.targetGroup})</span>
+                    </td>
+                    <td class="p-3 align-top">
+                        <strong class="text-pink-600">${s.title}</strong><br>
+                        <span class="text-slate-600 text-xs">${s.content}</span><br>
+                        <span class="text-[10px] text-slate-400">Chủ đề: ${s.category} | ${s.date}</span>
+                    </td>
+                    <td class="p-3 align-top">
+                        <select onchange="updateStatus(${s.id}, this.value)" class="px-2.5 py-1.5 rounded-xl border border-purple-200 text-xs font-bold bg-white focus:outline-none">
+                            <option value="Chưa xử lý" ${s.status === 'Chưa xử lý' ? 'selected' : ''}>⏳ Chưa xử lý</option>
+                            <option value="Đã tiếp nhận" ${s.status === 'Đã tiếp nhận' ? 'selected' : ''}>🧐 Đã tiếp nhận</option>
+                            <option value="Đã giải đáp / Xử lý" ${s.status === 'Đã giải đáp / Xử lý' ? 'selected' : ''}>🎉 Đã giải đáp</option>
+                        </select>
+                    </td>
+                    <td class="p-3 align-top space-y-2 text-center">
+                        <textarea id="reply-${s.id}" placeholder="Viết phản hồi gửi học sinh..." rows="2" class="w-full p-2 text-xs rounded-xl border border-purple-200 focus:outline-none">${s.reply || ''}</textarea>
+                        <div class="flex justify-center space-x-2">
+                            <button onclick="saveReply(${s.id})" class="px-3 py-1 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-bold text-xs shadow">Lưu phản hồi</button>
+                            <button onclick="deleteSuggestion(${s.id})" class="px-2 py-1 bg-rose-100 hover:bg-rose-200 text-rose-700 rounded-lg font-bold text-xs"><i class="fa-solid fa-trash"></i></button>
+                        </div>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function updateStatus(id, newStatus) {
+            let item = suggestions.find(s => s.id === id);
+            if(item) {
+                item.status = newStatus;
+                saveToLocalStorage();
+                updateAdminStats();
+            }
+        }
+
+        function saveReply(id) {
+            let replyText = document.getElementById(`reply-${id}`).value.trim();
+            let item = suggestions.find(s => s.id === id);
+            if(item) {
+                item.reply = replyText;
+                if(replyText && item.status === 'Chưa xử lý') item.status = 'Đã giải đáp / Xử lý';
+                saveToLocalStorage();
+                renderAdminTable('all');
+                updateAdminStats();
+                alert("✨ Đã lưu phản hồi thành công cho học sinh!");
+            }
+        }
+
+        function deleteSuggestion(id) {
+            if(confirm("Thầy/cô có chắc chắn muốn xóa ý kiến này không?")) {
+                suggestions = suggestions.filter(s => s.id !== id);
+                saveToLocalStorage();
+                renderAdminTable('all');
+                updateAdminStats();
+            }
+        }
+
+        function filterAdminTable(status) {
+            renderAdminTable(status);
+        }
+
+        function exportData() {
+            let dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(suggestions, null, 2));
+            let downloadAnchor = document.createElement('a');
+            downloadAnchor.setAttribute("href", dataStr);
+            downloadAnchor.setAttribute("download", "BaoCao_HomThuDoivien_PhuMy.json");
+            document.body.appendChild(downloadAnchor);
+            downloadAnchor.click();
+            downloadAnchor.remove();
+        }
+
+        // Mini Game Quiz
+        let quizData = [
+            { q: "Đội TNTP Hồ Chí Minh mang tên Bác Hồ kính yêu từ năm nào?", options: ["1941", "1950", "1970", "1976"], answer: 2 },
+            { q: "Khẩu hiệu của Đội TNTP Hồ Chí Minh là gì?", options: ["Vì Xã hội chủ nghĩa", "Sẵn sàng", "Tiến lên", "Học tập tốt lao động tốt"], answer: 1 },
+            { q: "Đội TNTP Hồ Chí Minh được thành lập vào ngày tháng năm nào?", options: ["15/05/1941", "26/03/1931", "19/05/1890", "22/12/1944"], answer: 0 }
+        ];
+        let currentQuiz = 0;
+        let quizScore = 0;
+
+        function loadQuiz() {
+            let q = quizData[currentQuiz];
+            document.getElementById('quiz-progress').innerText = `Câu hỏi ${currentQuiz + 1} / ${quizData.length}`;
+            document.getElementById('quiz-score').innerText = `Điểm: ${quizScore} ⭐`;
+            document.getElementById('quiz-question').innerText = q.q;
+            let optContainer = document.getElementById('quiz-options');
+            optContainer.innerHTML = '';
+            q.options.forEach((opt, idx) => {
+                let btn = document.createElement('button');
+                btn.className = "w-full text-left p-3 rounded-xl border-2 border-indigo-100 hover:border-pink-400 font-bold text-xs sm:text-sm bg-indigo-50/50 transition flex items-center justify-between";
+                btn.innerHTML = `<span>${opt}</span><span class="text-xs text-pink-600">Chọn</span>`;
+                btn.onclick = () => checkQuizAnswer(idx);
+                optContainer.appendChild(btn);
+            });
+        }
+
+        function checkQuizAnswer(selectedIdx) {
+            let q = quizData[currentQuiz];
+            if(selectedIdx === q.answer) {
+                quizScore += 10;
+                playSound('success');
+            } else {
+                playSound('pop');
+            }
+            currentQuiz++;
+            if(currentQuiz < quizData.length) {
+                loadQuiz();
+            } else {
+                document.getElementById('quiz-container').classList.add('hidden');
+                document.getElementById('quiz-result').classList.remove('hidden');
+            }
+        }
+
+        function restartQuiz() {
+            currentQuiz = 0;
+            quizScore = 0;
+            document.getElementById('quiz-container').classList.remove('hidden');
+            document.getElementById('quiz-result').classList.add('hidden');
+            loadQuiz();
+        }
+
+        // Khởi chạy khi mở trang
+        window.onload = function() {
+            updateStats();
+            loadQuiz();
+        };
+    </script>
+</body>
+</html>
